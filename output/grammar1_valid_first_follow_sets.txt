@@ -1,0 +1,10 @@
+
+--- FIRST SETS ---
+FIRST(Start) = { a, b }
+FIRST(First) = { a, epsilon }
+FIRST(Second) = { b }
+
+--- FOLLOW SETS ---
+FOLLOW(Start) = { $ }
+FOLLOW(First) = { b }
+FOLLOW(Second) = { $ }

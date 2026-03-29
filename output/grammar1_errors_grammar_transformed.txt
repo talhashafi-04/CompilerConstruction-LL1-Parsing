@@ -1,0 +1,15 @@
+
+--- ORIGINAL GRAMMAR ---
+Start -> First Second
+First -> a | epsilon
+Second -> b
+
+--- AFTER LEFT FACTORING ---
+Start -> First Second
+First -> a | epsilon
+Second -> b
+
+--- AFTER LEFT RECURSION REMOVAL ---
+Start -> First Second
+First -> a | epsilon
+Second -> b

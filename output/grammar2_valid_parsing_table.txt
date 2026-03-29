@@ -1,0 +1,13 @@
+
+╔══════════════════════════════════════════╗
+║           LL(1) PARSING TABLE            ║
+╚══════════════════════════════════════════╝
+  Grammar IS LL(1) - no conflicts detected.
+
+                    +                 *                 (                 )                 id                $                 
+--------------------------------------------------------------------------------------------------------------------------------
+Expr                ---               ---               Expr -> Term Ex...---               Expr -> Term Ex...---               
+Expr'               Expr' -> + Term...---               ---               Expr' -> epsilon  ---               Expr' -> epsilon  
+Term                ---               ---               Term -> Factor ...---               Term -> Factor ...---               
+Term'               Term' -> epsilon  Term' -> * Fact...---               Term' -> epsilon  ---               Term' -> epsilon  
+Factor              ---               ---               Factor -> ( Exp...---               Factor -> id      ---               

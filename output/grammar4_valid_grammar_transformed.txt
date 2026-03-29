@@ -1,0 +1,19 @@
+
+--- ORIGINAL GRAMMAR ---
+Prog -> Stmt Prog | epsilon
+Stmt -> id assign Expr | print Expr
+Expr -> Expr plus Term | Term
+Term -> num | id
+
+--- AFTER LEFT FACTORING ---
+Prog -> Stmt Prog | epsilon
+Stmt -> id assign Expr | print Expr
+Expr -> Expr plus Term | Term
+Term -> num | id
+
+--- AFTER LEFT RECURSION REMOVAL ---
+Prog -> Stmt Prog | epsilon
+Stmt -> id assign Expr | print Expr
+Expr -> Term Expr'
+Expr' -> plus Term Expr' | epsilon
+Term -> num | id

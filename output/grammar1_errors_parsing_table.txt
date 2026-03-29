@@ -1,0 +1,11 @@
+
+╔══════════════════════════════════════════╗
+║           LL(1) PARSING TABLE            ║
+╚══════════════════════════════════════════╝
+  Grammar IS LL(1) - no conflicts detected.
+
+                    a                 b                 $                 
+--------------------------------------------------------------------------
+Start               Start -> First ...Start -> First ...---               
+First               First -> a        First -> epsilon  ---               
+Second              ---               Second -> b       ---               

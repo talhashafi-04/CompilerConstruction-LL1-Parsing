@@ -1,0 +1,14 @@
+
+╔══════════════════════════════════════════╗
+║           LL(1) PARSING TABLE            ║
+╚══════════════════════════════════════════╝
+  *** WARNING: Grammar is NOT LL(1)! Conflicts detected. ***
+  CONFLICT at M[Start, b]: [Start -> Alpha a] [Start -> b] 
+  CONFLICT at M[Alpha, a]: [Alpha -> Alpha'] [Alpha -> Alpha'] 
+  CONFLICT at M[Alpha', a]: [Alpha' -> a d Alpha'] [Alpha' -> epsilon] 
+
+                    a                 b                 d                 c                 $                 
+--------------------------------------------------------------------------------------------------------------
+Start               Start -> Alpha a  Start -> Alpha a  ---               Start -> Alpha a  ---               
+Alpha               Alpha -> Alpha'   Alpha -> b d Al...---               Alpha -> Alpha'   ---               
+Alpha'              Alpha' -> a d A...---               ---               Alpha' -> c Alp...---               

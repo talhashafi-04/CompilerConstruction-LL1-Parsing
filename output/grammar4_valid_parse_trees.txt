@@ -1,0 +1,67 @@
+
+##########################################################################################
+#  PARSE TREES - Grammar 4
+##########################################################################################
+
+--- Parse Tree for: "id assign num" ---
+Prog
+├── Stmt
+│   ├── id
+│   ├── assign
+│   └── Expr
+│       ├── Term
+│       │   └── num
+│       └── Expr'
+│           └── ε
+└── Prog
+    └── ε
+
+--- Parse Tree for: "print num" ---
+Prog
+├── Stmt
+│   ├── print
+│   └── Expr
+│       ├── Term
+│       │   └── num
+│       └── Expr'
+│           └── ε
+└── Prog
+    └── ε
+
+--- Parse Tree for: "id assign id plus num" ---
+Prog
+├── Stmt
+│   ├── id
+│   ├── assign
+│   └── Expr
+│       ├── Term
+│       │   └── id
+│       └── Expr'
+│           ├── plus
+│           ├── Term
+│           │   └── num
+│           └── Expr'
+│               └── ε
+└── Prog
+    └── ε
+
+--- Parse Tree for: "id assign num print id" ---
+Prog
+├── Stmt
+│   ├── id
+│   ├── assign
+│   └── Expr
+│       ├── Term
+│       │   └── num
+│       └── Expr'
+│           └── ε
+└── Prog
+    ├── Stmt
+    │   ├── print
+    │   └── Expr
+    │       ├── Term
+    │       │   └── id
+    │       └── Expr'
+    │           └── ε
+    └── Prog
+        └── ε
