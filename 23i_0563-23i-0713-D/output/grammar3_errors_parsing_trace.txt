@@ -1,0 +1,71 @@
+
+##########################################################################################
+#  PARSING TRACES - Grammar 3
+##########################################################################################
+
+==========================================================================================
+  Parsing line 1: "if then assign"
+==========================================================================================
+StepStack (bottom->top)                Input Remaining               Action
+------------------------------------------------------------------------------------------
+1   $ Stmt                             if then assign $              Predict: Stmt -> if Stmt'
+2   $ Stmt' if                         if then assign $              Match 'if'
+3   $ Stmt'                            then assign $                 
+  [ERROR] Line 1, Col 2: No rule for non-terminal 'Stmt'' with lookahead 'then'.
+    [RECOVERY] Sync set for Stmt': { $ else $ }
+    [RECOVERY] Popping 'Stmt'' from stack
+    [RECOVERY] Skipping input token 'then'
+    [RECOVERY] Skipping input token 'assign'
+------------------------------------------------------------------------------------------
+  Result: *** STRING REJECTED *** (1 error(s))
+==========================================================================================
+
+==========================================================================================
+  Parsing line 2: "if id assign"
+==========================================================================================
+StepStack (bottom->top)                Input Remaining               Action
+------------------------------------------------------------------------------------------
+1   $ Stmt                             if id assign $                Predict: Stmt -> if Stmt'
+2   $ Stmt' if                         if id assign $                Match 'if'
+3   $ Stmt'                            id assign $                   Predict: Stmt' -> id Stmt''
+4   $ Stmt'' id                        id assign $                   Match 'id'
+5   $ Stmt''                           assign $                      
+  [ERROR] Line 2, Col 3: No rule for non-terminal 'Stmt''' with lookahead 'assign'.
+    [RECOVERY] Sync set for Stmt'': { $ else $ }
+    [RECOVERY] Popping 'Stmt''' from stack
+    [RECOVERY] Skipping input token 'assign'
+------------------------------------------------------------------------------------------
+  Result: *** STRING REJECTED *** (1 error(s))
+==========================================================================================
+
+==========================================================================================
+  Parsing line 3: "if id then"
+==========================================================================================
+StepStack (bottom->top)                Input Remaining               Action
+------------------------------------------------------------------------------------------
+1   $ Stmt                             if id then $                  Predict: Stmt -> if Stmt'
+2   $ Stmt' if                         if id then $                  Match 'if'
+3   $ Stmt'                            id then $                     Predict: Stmt' -> id Stmt''
+4   $ Stmt'' id                        id then $                     Match 'id'
+5   $ Stmt''                           then $                        Predict: Stmt'' -> then Stmt'''
+6   $ Stmt''' then                     then $                        Match 'then'
+7   $ Stmt'''                          $                             
+  [ERROR] Line 3, Col 4: No rule for non-terminal 'Stmt'''' with lookahead '$'.
+    [RECOVERY] Sync set for Stmt''': { $ else $ }
+    [RECOVERY] Force-popping 'Stmt'''' to avoid loop
+------------------------------------------------------------------------------------------
+  Result: *** STRING REJECTED *** (1 error(s))
+==========================================================================================
+
+==========================================================================================
+  Parsing line 4: "else assign"
+==========================================================================================
+StepStack (bottom->top)                Input Remaining               Action
+------------------------------------------------------------------------------------------
+1   $ Stmt                             else assign $                 
+  [ERROR] Line 4, Col 1: No rule for non-terminal 'Stmt' with lookahead 'else'.
+    [RECOVERY] Sync set for Stmt: { $ else $ }
+    [RECOVERY] Force-popping 'Stmt' to avoid loop
+------------------------------------------------------------------------------------------
+  Result: *** STRING REJECTED *** (1 error(s))
+==========================================================================================

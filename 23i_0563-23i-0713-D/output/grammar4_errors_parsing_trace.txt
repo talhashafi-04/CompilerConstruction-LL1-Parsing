@@ -1,0 +1,92 @@
+
+##########################################################################################
+#  PARSING TRACES - Grammar 4
+##########################################################################################
+
+==========================================================================================
+  Parsing line 1: "assign num"
+==========================================================================================
+StepStack (bottom->top)                Input Remaining               Action
+------------------------------------------------------------------------------------------
+1   $ Prog                             assign num $                  
+  [ERROR] Line 1, Col 1: No rule for non-terminal 'Prog' with lookahead 'assign'.
+    [RECOVERY] Sync set for Prog: { $ $ }
+    [RECOVERY] Popping 'Prog' from stack
+    [RECOVERY] Skipping input token 'assign'
+    [RECOVERY] Skipping input token 'num'
+------------------------------------------------------------------------------------------
+  Result: *** STRING REJECTED *** (1 error(s))
+==========================================================================================
+
+==========================================================================================
+  Parsing line 2: "id id"
+==========================================================================================
+StepStack (bottom->top)                Input Remaining               Action
+------------------------------------------------------------------------------------------
+1   $ Prog                             id id $                       Predict: Prog -> Stmt Prog
+2   $ Prog Stmt                        id id $                       Predict: Stmt -> id assign Expr
+3   $ Prog Expr assign id              id id $                       Match 'id'
+4   $ Prog Expr assign                 id $                          
+  [ERROR] Line 2, Col 2: Missing symbol. Expected 'assign', found 'id'.
+5   $ Prog Expr                        $                             
+  [ERROR] Line 2, Col 3: No rule for non-terminal 'Expr' with lookahead '$'.
+    [RECOVERY] Sync set for Expr: { id print $ $ }
+    [RECOVERY] Force-popping 'Expr' to avoid loop
+6   $ Prog                             $                             Predict: Prog -> epsilon
+7   $                                  $                             Accept
+------------------------------------------------------------------------------------------
+  Result: STRING ACCEPTED (with 2 error(s) recovered)
+==========================================================================================
+
+==========================================================================================
+  Parsing line 3: "print"
+==========================================================================================
+StepStack (bottom->top)                Input Remaining               Action
+------------------------------------------------------------------------------------------
+1   $ Prog                             print $                       Predict: Prog -> Stmt Prog
+2   $ Prog Stmt                        print $                       Predict: Stmt -> print Expr
+3   $ Prog Expr print                  print $                       Match 'print'
+4   $ Prog Expr                        $                             
+  [ERROR] Line 3, Col 2: No rule for non-terminal 'Expr' with lookahead '$'.
+    [RECOVERY] Sync set for Expr: { id print $ $ }
+    [RECOVERY] Force-popping 'Expr' to avoid loop
+5   $ Prog                             $                             Predict: Prog -> epsilon
+6   $                                  $                             Accept
+------------------------------------------------------------------------------------------
+  Result: STRING ACCEPTED (with 1 error(s) recovered)
+==========================================================================================
+
+==========================================================================================
+  Parsing line 4: "id assign"
+==========================================================================================
+StepStack (bottom->top)                Input Remaining               Action
+------------------------------------------------------------------------------------------
+1   $ Prog                             id assign $                   Predict: Prog -> Stmt Prog
+2   $ Prog Stmt                        id assign $                   Predict: Stmt -> id assign Expr
+3   $ Prog Expr assign id              id assign $                   Match 'id'
+4   $ Prog Expr assign                 assign $                      Match 'assign'
+5   $ Prog Expr                        $                             
+  [ERROR] Line 4, Col 3: No rule for non-terminal 'Expr' with lookahead '$'.
+    [RECOVERY] Sync set for Expr: { id print $ $ }
+    [RECOVERY] Force-popping 'Expr' to avoid loop
+6   $ Prog                             $                             Predict: Prog -> epsilon
+7   $                                  $                             Accept
+------------------------------------------------------------------------------------------
+  Result: STRING ACCEPTED (with 1 error(s) recovered)
+==========================================================================================
+
+==========================================================================================
+  Parsing line 5: "num plus id"
+==========================================================================================
+StepStack (bottom->top)                Input Remaining               Action
+------------------------------------------------------------------------------------------
+1   $ Prog                             num plus id $                 
+  [ERROR] Line 5, Col 1: No rule for non-terminal 'Prog' with lookahead 'num'.
+    [RECOVERY] Sync set for Prog: { $ $ }
+    [RECOVERY] Popping 'Prog' from stack
+    [RECOVERY] Skipping input token 'num'
+    [RECOVERY] Skipping input token 'plus'
+    [RECOVERY] Skipping input token 'id'
+------------------------------------------------------------------------------------------
+  Result: *** STRING REJECTED *** (1 error(s))
+==========================================================================================

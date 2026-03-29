@@ -1,0 +1,14 @@
+
+--- FIRST SETS ---
+FIRST(Expr) = { (, id }
+FIRST(Expr') = { +, epsilon }
+FIRST(Term) = { (, id }
+FIRST(Term') = { *, epsilon }
+FIRST(Factor) = { (, id }
+
+--- FOLLOW SETS ---
+FOLLOW(Expr) = { $, ) }
+FOLLOW(Expr') = { $, ) }
+FOLLOW(Term) = { +, $, ) }
+FOLLOW(Term') = { +, $, ) }
+FOLLOW(Factor) = { *, +, $, ) }

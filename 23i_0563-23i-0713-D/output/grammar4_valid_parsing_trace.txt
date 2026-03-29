@@ -1,0 +1,90 @@
+
+##########################################################################################
+#  PARSING TRACES - Grammar 4
+##########################################################################################
+
+==========================================================================================
+  Parsing line 1: "id assign num"
+==========================================================================================
+StepStack (bottom->top)                Input Remaining               Action
+------------------------------------------------------------------------------------------
+1   $ Prog                             id assign num $               Predict: Prog -> Stmt Prog
+2   $ Prog Stmt                        id assign num $               Predict: Stmt -> id assign Expr
+3   $ Prog Expr assign id              id assign num $               Match 'id'
+4   $ Prog Expr assign                 assign num $                  Match 'assign'
+5   $ Prog Expr                        num $                         Predict: Expr -> Term Expr'
+6   $ Prog Expr' Term                  num $                         Predict: Term -> num
+7   $ Prog Expr' num                   num $                         Match 'num'
+8   $ Prog Expr'                       $                             Predict: Expr' -> epsilon
+9   $ Prog                             $                             Predict: Prog -> epsilon
+10  $                                  $                             Accept
+------------------------------------------------------------------------------------------
+  Result: *** STRING ACCEPTED ***
+==========================================================================================
+
+==========================================================================================
+  Parsing line 2: "print num"
+==========================================================================================
+StepStack (bottom->top)                Input Remaining               Action
+------------------------------------------------------------------------------------------
+1   $ Prog                             print num $                   Predict: Prog -> Stmt Prog
+2   $ Prog Stmt                        print num $                   Predict: Stmt -> print Expr
+3   $ Prog Expr print                  print num $                   Match 'print'
+4   $ Prog Expr                        num $                         Predict: Expr -> Term Expr'
+5   $ Prog Expr' Term                  num $                         Predict: Term -> num
+6   $ Prog Expr' num                   num $                         Match 'num'
+7   $ Prog Expr'                       $                             Predict: Expr' -> epsilon
+8   $ Prog                             $                             Predict: Prog -> epsilon
+9   $                                  $                             Accept
+------------------------------------------------------------------------------------------
+  Result: *** STRING ACCEPTED ***
+==========================================================================================
+
+==========================================================================================
+  Parsing line 3: "id assign id plus num"
+==========================================================================================
+StepStack (bottom->top)                Input Remaining               Action
+------------------------------------------------------------------------------------------
+1   $ Prog                             id assign id plus num $       Predict: Prog -> Stmt Prog
+2   $ Prog Stmt                        id assign id plus num $       Predict: Stmt -> id assign Expr
+3   $ Prog Expr assign id              id assign id plus num $       Match 'id'
+4   $ Prog Expr assign                 assign id plus num $          Match 'assign'
+5   $ Prog Expr                        id plus num $                 Predict: Expr -> Term Expr'
+6   $ Prog Expr' Term                  id plus num $                 Predict: Term -> id
+7   $ Prog Expr' id                    id plus num $                 Match 'id'
+8   $ Prog Expr'                       plus num $                    Predict: Expr' -> plus Term Expr'
+9   $ Prog Expr' Term plus             plus num $                    Match 'plus'
+10  $ Prog Expr' Term                  num $                         Predict: Term -> num
+11  $ Prog Expr' num                   num $                         Match 'num'
+12  $ Prog Expr'                       $                             Predict: Expr' -> epsilon
+13  $ Prog                             $                             Predict: Prog -> epsilon
+14  $                                  $                             Accept
+------------------------------------------------------------------------------------------
+  Result: *** STRING ACCEPTED ***
+==========================================================================================
+
+==========================================================================================
+  Parsing line 4: "id assign num print id"
+==========================================================================================
+StepStack (bottom->top)                Input Remaining               Action
+------------------------------------------------------------------------------------------
+1   $ Prog                             id assign num print id $      Predict: Prog -> Stmt Prog
+2   $ Prog Stmt                        id assign num print id $      Predict: Stmt -> id assign Expr
+3   $ Prog Expr assign id              id assign num print id $      Match 'id'
+4   $ Prog Expr assign                 assign num print id $         Match 'assign'
+5   $ Prog Expr                        num print id $                Predict: Expr -> Term Expr'
+6   $ Prog Expr' Term                  num print id $                Predict: Term -> num
+7   $ Prog Expr' num                   num print id $                Match 'num'
+8   $ Prog Expr'                       print id $                    Predict: Expr' -> epsilon
+9   $ Prog                             print id $                    Predict: Prog -> Stmt Prog
+10  $ Prog Stmt                        print id $                    Predict: Stmt -> print Expr
+11  $ Prog Expr print                  print id $                    Match 'print'
+12  $ Prog Expr                        id $                          Predict: Expr -> Term Expr'
+13  $ Prog Expr' Term                  id $                          Predict: Term -> id
+14  $ Prog Expr' id                    id $                          Match 'id'
+15  $ Prog Expr'                       $                             Predict: Expr' -> epsilon
+16  $ Prog                             $                             Predict: Prog -> epsilon
+17  $                                  $                             Accept
+------------------------------------------------------------------------------------------
+  Result: *** STRING ACCEPTED ***
+==========================================================================================
