@@ -1,2 +1,0 @@
-Stmt -> if Cond then Stmt else Stmt | if Cond then Stmt | assign
-Cond -> id

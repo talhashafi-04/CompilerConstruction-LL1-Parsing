@@ -1,4 +1,0 @@
-Prog -> Stmt Prog | epsilon
-Stmt -> id assign Expr | print Expr
-Expr -> Expr plus Term | Term
-Term -> num | id

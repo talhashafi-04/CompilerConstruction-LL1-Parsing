@@ -1,3 +1,0 @@
-Start -> First Second
-First -> a | epsilon
-Second -> b

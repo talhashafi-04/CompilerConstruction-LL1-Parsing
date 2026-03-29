@@ -1,4 +1,0 @@
-assign
-if id then assign
-if id then assign else assign
-if id then if id then assign

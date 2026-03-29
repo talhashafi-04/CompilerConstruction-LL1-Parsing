@@ -1,4 +1,0 @@
-id assign num
-print num
-id assign id plus num
-id assign num print id

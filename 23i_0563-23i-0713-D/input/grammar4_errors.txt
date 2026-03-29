@@ -1,5 +1,0 @@
-assign num
-id id
-print
-id assign
-num plus id
